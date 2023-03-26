@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Updating Page</title>
+    <link th:href="@{/styles/style.css}" rel="stylesheet" />
+  </head>
+
+  <body class="background">
+    <div class="container">
+      <p class="prgrf">Update Book :D</p>
+
+      <form
+        action="#"
+        th:action="@{/books/update/{id}(id=${book.id})}"
+        th:object="${book}"
+        method="post"
+      >
+        <div>
+          <div>
+            <label for="title" class="prgrf">Title</label>
+            <input
+              type="text"
+              th:field="*{title}"
+              class="form-control"
+              id="title"
+              placeholder="Name of book"
+            />
+            <span
+              th:if="${#fields.hasErrors('title')}"
+              th:errors="*{title}"
+              class="text-danger"
+            ></span
+            ><br />
+
+            <label for="title" class="prgrf">Isbn</label>
+            <input
+              type="text"
+              th:field="*{isbn}"
+              class="form-control"
+              id="ibn"
+              placeholder="Isbn of book"
+            />
+            <span
+              th:if="${#fields.hasErrors('isbn')}"
+              th:errors="*{isbn}"
+              class="text-danger"
+            ></span
+            ><br />
+
+            <label for="title" class="prgrf">Published Year</label>
+
+            <input
+              type="text"
+              th:field="*{publishedYear}"
+              class="form-control"
+              id="publishedYear"
+              placeholder="Published Year"
+            />
+            <span
+              th:if="${#fields.hasErrors('publishedYear')}"
+              th:errors="*{publishedYear}"
+              class="text-danger"
+            ></span
+            ><br />
+
+            <label for="title" class="prgrf">Languages</label>
+
+            <input
+              type="text"
+              th:field="*{lang}"
+              class="form-control"
+              id="lang"
+              placeholder="Language of book"
+            />
+            <span
+              th:if="${#fields.hasErrors('lang')}"
+              th:errors="*{lang}"
+              class="text-danger"
+            ></span>
+          </div>
+          <br />
+
+          <input class="fnl" type="submit" value="Update Book" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

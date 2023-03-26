@@ -1,0 +1,8 @@
+com\bkrva\MidProject\controller\MainController.class
+com\bkrva\MidProject\modules\Borrow.class
+com\bkrva\MidProject\controller\BookController.class
+com\bkrva\MidProject\repos\BookRepo.class
+com\bkrva\MidProject\repos\BorrowRepo.class
+com\bkrva\MidProject\InitData.class
+com\bkrva\MidProject\modules\Book.class
+com\bkrva\MidProject\MidProjectApplication.class

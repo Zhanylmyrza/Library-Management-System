@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adding Page</title>
+    <link th:href="@{/styles/style.css}" rel="stylesheet" />
+  </head>
+  <body class="background">
+    <div class="container">
+      <h2 th:unless="${book.id}" class="prgrf">Create a new book :D</h2>
+      <h2
+        th:if="${book.id}"
+        class="prgrf"
+        th:text="'Edit book: ' + ${book.title}"
+      ></h2>
+      <form
+        action="#"
+        th:action="@{/books/add}"
+        th:object="${book}"
+        method="post"
+      >
+        <input type="hidden" name="id" th:field="*{id}" />
+
+        <label for="title" class="prgrf">Title</label>
+        <input type="text" th:field="*{title}" id="title" placeholder="Title" />
+        <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span
+        ><br />
+        <label for="author" class="prgrf">Author</label>
+        <input
+          type="text"
+          th:field="*{author}"
+          id="author"
+          placeholder="author"
+        />
+        <span
+          th:if="${#fields.hasErrors('author')}"
+          th:errors="*{author}"
+        ></span
+        ><br />
+
+        <label for="publishedYear" class="prgrf">PublishedYear: </label>
+        <input
+          type="number"
+          th:field="*{publisher}"
+          id="publisher"
+          placeholder="publisher"
+        />
+        <span
+          th:if="${#fields.hasErrors('publisher')}"
+          th:errors="*{publisher}"
+        ></span
+        ><br />
+
+        <label for="ISBN" class="prgrf">ISBN: </label>
+        <input type="text" th:field="*{ISBN}" id="ISBN" placeholder="ISBN" />
+        <span th:if="${#fields.hasErrors('ISBN')}" th:errors="*{ISBN}"></span
+        ><br />
+
+        <input class="fnl" type="submit" value="Add Books" />
+      </form>
+    </div>
+  </body>
+</html>

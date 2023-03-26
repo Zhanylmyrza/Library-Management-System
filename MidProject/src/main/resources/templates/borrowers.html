@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+      crossorigin="anonymous"
+    />
+
+    <title>Main Page</title>
+    <link th:href="@{/styles/style.css}" rel="stylesheet" />
+  </head>
+  <body class="background">
+    <div class="container">
+      <h1 class="prgrf">Borrowers</h1>
+
+      <a
+        class="lst fnl"
+        th:href="@{/show-books/{id}(id=${borrower.id})}"
+        th:each="borrower : ${borrowers}"
+        th:text="${borrower.getName()}"
+      >
+        Borrower1
+      </a>
+    </div>
+  </body>
+</html>

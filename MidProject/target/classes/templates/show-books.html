@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+      crossorigin="anonymous"
+    />
+    <title>Show book</title>
+    <link th:href="@{/styles/style.css}" rel="stylesheet" />
+  </head>
+  <body class="background">
+    <div class="container">
+      <h1 class="prgrf">Borrowed books</h1>
+      <p th:each="book : ${books}" th:text="${book.getTitle()}">Show books</p>
+      <!-- <tr th:each="book : ${books}">
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <br />
+      </tr> -->
+    </div>
+  </body>
+</html>

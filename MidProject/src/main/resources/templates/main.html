@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+      crossorigin="anonymous"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+      integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+      integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <title>Main Page</title>
+    <link th:href="@{/styles/style.css}" rel="stylesheet" />
+  </head>
+  <body class="background">
+    <div class="container mt-5" th:switch="${books}">
+      <h2 th:case="null">No book yet!</h2>
+      <div th:case="*">
+        <h2 class="prgrf">Bookshelf</h2>
+        <form th:action="@{/books/search}" method="get">
+          <input
+            id="txtSearch"
+            type="txt"
+            name="keyword"
+            th:value="${keyword}"
+            placeholder="Find by Owner Name "
+          />
+          <button type="submit" class="btn btn-info">Search</button>
+        </form>
+        <table class="table table-bordered table-sm mt-2">
+          <thead>
+            <tr>
+              <th class="prgrf pdng">Title</th>
+              <th class="prgrf pdng">Author</th>
+              <th class="prgrf pdng">Published</th>
+              <th class="prgrf pdng">ISBN</th>
+
+              <th class="prgrf">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="book : ${books}">
+              <td th:text="${book.title}"></td>
+              <td th:text="${book.author}"></td>
+              <td th:text="${book.publisher}"></td>
+              <td th:text="${book.ISBN}"></td>
+              <td>
+                <a th:href="@{/books/edit/{id}(id=${book.id})}"
+                  ><i class="fas fa-pen"></i
+                ></a>
+              </td>
+              <td>
+                <a th:href="@{/books/delete/{id}(id=${book.id})}"
+                  ><i class="fas fa-trash-alt"></i
+                ></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        <a class="fnl" href="/books/create" th:href="@{/books/create}"
+          >Create new Book</a
+        >
+      </p>
+
+      <p>
+        <a class="fnl" href="/borrow" th:href="@{/borrow}"
+          >See List of Borrowers</a
+        >
+      </p>
+    </div>
+  </body>
+</html>
